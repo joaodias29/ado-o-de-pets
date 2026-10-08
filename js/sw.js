@@ -14,14 +14,12 @@ const ASSETS_TO_CACHE = [
     './img/icons/icon-192.png',
     './img/icons/icon-512.png'
 ];
-
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS_TO_CACHE))
     );
     self.skipWaiting();
 });
-
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys().then(keys => Promise.all(
@@ -37,7 +35,6 @@ self.addEventListener('activate', event => {
         clients.forEach(client => client.postMessage({ type: 'VERSION_UPDATE' }));
     });
 });
-
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
     
@@ -56,17 +53,9 @@ self.addEventListener('fetch', event => {
         );
         return;
     }
-
     // Estratégia Cache First c/ Network Fallback para o shell
     event.respondWith(
         caches.match(event.request).then(cachedResponse => {
             if (cachedResponse) return cachedResponse;
             return fetch(event.request).catch(() => {
                 // Se falhar e for navegação (HTML), servir index.html com modo offline tratado no router
-                if (event.request.mode === 'navigate') {
-                    return caches.match('./index.html');
-                }
-            });
-        })
-    );
-});
