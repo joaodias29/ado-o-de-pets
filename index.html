@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="font-normal scroll-smooth" data-mode="site">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Um Clique, Uma Companhia</title>
+    
+    <!-- PWA / Mobile Web App Configs -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#FFFDF8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Uma Companhia">
+    <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
+
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#FFFDF8',
+                            card: '#FFFFFF',
+                            dark: '#1F2937',
+                            primary: '#0E7C7B',
+                            highlight: '#C2410C',
+                            whatsapp: '#0B7A3E',
+                            softTeal: '#E6F4F1',
+                            softOrange: '#FFF1E6'
+                        }
+                    },
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-brand-light text-brand-dark min-h-screen flex flex-col font-sans transition-colors duration-200">
+    
+    <!-- Toast de Atualização -->
+    <div id="update-toast"></div>
+
+    <div id="layout-header"></div>
+    <main id="app-root" class="flex-grow flex flex-col w-full max-w-5xl mx-auto px-4 py-8" aria-live="polite"></main>
+    <div id="layout-footer"></div>
+    
+    <!-- Bottom Nav (Aparece só no modo App via CSS) -->
+    <div id="bottom-nav"></div>
+
+    <!-- Banner de Instalação (Aparece só no Site) -->
+    <div id="install-banner"></div>
+
+    <!-- Scripts do App carregados em ordem estrita -->
+    <script src="js/app.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/lib.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/screens.js"></script>
+    <script src="js/router.js"></script>
+</body>
+</html>
