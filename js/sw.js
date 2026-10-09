@@ -59,3 +59,6 @@ self.addEventListener('fetch', event => {
             if (cachedResponse) return cachedResponse;
             return fetch(event.request).catch(() => {
                 // Se falhar e for navegação (HTML), servir index.html com modo offline tratado no router
+                if (event.request.mode === 'navigate') {
+                    return caches.match('./index.html');
+                }
