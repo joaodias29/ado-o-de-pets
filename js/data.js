@@ -54,3 +54,23 @@ window.App.data = {
     stories: [
         { name: "Dona Maria & Tico", quote: "A casa estava muito silenciosa. O Tico trouxe alegria e um motivo para sorrir todos os dias.", photo: "https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=400&q=80" },
         { name: "Sr. João & Bela", quote: "Achei que estava velho para ter um cachorro, mas a Bela é tão calma que somos parceiros perfeitos.", photo: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=400&q=80" }
+    ],
+    faq: [
+        { q: "Como faço para adotar?", a: "É muito simples! Encontre um pet disponível na nossa plataforma e clique no botão do WhatsApp." },
+        { q: "A adoção tem algum custo?", a: "A adoção em si é gratuita. Algumas ONGs podem pedir uma pequena ajuda opcional e solidária." },
+        { q: "O que a ONG vai me perguntar?", a: "Faremos perguntas sobre sua rotina e residência apenas para garantir o melhor fit para o animal." },
+        { q: "E se o pet já estiver em processo de adoção?", a: "Pets com a etiqueta 'Em conversa com uma família' já estão sendo entrevistados. Mas temos outros esperando por você!" }
+    ]
+};
+
+// Auto-seed da demonstração se o localStorage for 0.
+window.App.data.loadDemoData = function() {
+    localStorage.removeItem('cc_pets');
+    localStorage.removeItem('cc_leads');
+    localStorage.removeItem('cc_messages');
+    localStorage.removeItem('cc_adoptions');
+    
+    // As injeções nativas ocorrem ao ler getPets no services.
+    alert('Dados de demonstração restaurados.');
+    window.location.reload();
+};
